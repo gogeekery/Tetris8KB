@@ -37,7 +37,7 @@ LRESULT CALLBACK WndProc(HWND aWnd, UINT aMsg, WPARAM aWParam, LPARAM aLParam) {
 			PAINTSTRUCT lPS;
 			HDC lPHDC = BeginPaint(aWnd, &lPS);
 			FillRect(lPHDC, &(lPS.rcPaint), (HBRUSH) (COLOR_WINDOW+1));
-			BitBlt(hWinDC, 0, 0, cTileSize*cMapWidth, cTileSize*cMapHeight, hMapDC, 0, 0, SRCCOPY);
+			BitBlt(hWinDC, 2, 1, cTileSize*cMapWidth, cTileSize*cMapHeight, hMapDC, 0, 0, SRCCOPY);
 			gameDrawHUD();
 			EndPaint(aWnd, &lPS);
 		}
