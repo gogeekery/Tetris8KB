@@ -44,10 +44,11 @@ void musicAddNotes() {
 	WaveData[2] = (char*)malloc(WaveLen[2]);
 
 	tU8 Data;
-	tS8 Amp = 16;
+	tS8 Amp = 8;
 	tU16 Pos, Note;
 	tU32 DataPos = 0;
 
+	// Square wave
 	for (Pos = 0; Pos < (tU16)(BPS*(4/(double)TetrisNotes[CurNote].Len)); ++Pos) {
 
 		Data = 128+Amp;
@@ -60,12 +61,10 @@ void musicAddNotes() {
 	}
 
 	++CurNote;
+	CurWave ^= 1;
 
-	// End of song
 	if (CurNote == (sizeof(TetrisNotes)/sizeof(TetrisNotes[0]))) {
 		CurNote = 0;
-		CurWave ^= 1;
-		(sizeof(TetrisNotes)/sizeof(TetrisNotes[0]));
 	}
 
 }
@@ -121,5 +120,3 @@ inline void musicInit() {
 	musicAddNotes();
 
 }
-
-
