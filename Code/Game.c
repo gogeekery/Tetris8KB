@@ -17,6 +17,7 @@ void gameNew() {
 	shapeNext = rand()%cShapeNum;
 	gameTime = gameScore = 0;
 	shapeNew();
+	gameUpdateMap();
 
 }
 
@@ -102,7 +103,7 @@ void gameInit() {
 void gameLoop() {
 
 	int Speed = 20-(gameScore/2);
-	if (Speed <= 1) Speed = 1;
+	if (Speed <= 4) Speed = 4;
 
 	++gameTime;
 
@@ -195,7 +196,7 @@ void gameUpdateMap() {
 	// Draw everything onto the window!
 	{	// Don't wipe the whole window, just repaint the game area...
 		const RECT lRect = {0, 0, cTileSize*cMapWidth, cTileSize*cMapHeight};
-		BitBlt(hWinDC, 0, 0, cTileSize*cMapWidth, cTileSize*cMapHeight, hMapDC, 0, 0, SRCCOPY);
+		BitBlt(hWinDC, 2, 1, cTileSize*cMapWidth, cTileSize*cMapHeight, hMapDC, 0, 0, SRCCOPY);
 		ValidateRect(gWnd, &lRect);
 	}
 
@@ -244,4 +245,3 @@ void gameDrawHUD() {			// Updates the Shape preview (next piece), Score, ETC
 	// ------
 
 }
-
